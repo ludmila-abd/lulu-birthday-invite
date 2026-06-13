@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ludmila's Birthday RSVP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="Lulu's Birthday Night You Fucking Twat (respectfully)">
+    <meta property="og:description" content="Pub pre-game. Hardcore/gabber rave. RSVP plz thanks 🥳.">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<audio id="pubMusic" loop>
+    <source src="{{ url_for('static', filename='audio/pub_music.mp3') }}" type="audio/mpeg">
+</audio>
+
+<audio id="technoMusic" loop>
+    <source src="{{ url_for('static', filename='audio/techno_music.mp3') }}" type="audio/mpeg">
+</audio>
+
+<audio id="finalMusic" loop>
+    <source src="{{ url_for('static', filename='audio/final_music.mp3') }}" type="audio/mpeg">
+</audio>
+
+    <main class="app">
+
+        <!-- LANDING -->
+        <section id="landingScreen" class="screen active landing-theme">
+            <div class="noise"></div>
+
+            <div class="card hero-card">
+                <p class="label">Official Summons</p>
+
+                <h1>Lulu’s Birthday Night</h1>
+
+                <p class="subtitle">
+                    Friday 26th June. Edinburgh. Pub pre-game. Hardcore/gabber rave.
+                    Gifts are welcome. Drinks are definitely accepted as legal tender.
+                </p>
+
+                <div class="event-mini-grid">
+                    <div>
+                        <span>Date</span>
+                        <strong>26 June</strong>
+                    </div>
+                    <div>
+                        <span>Part I</span>
+                        <strong>OX184</strong>
+                    </div>
+                    <div>
+                        <span>Part II</span>
+                        <strong>Bongo Club</strong>
+                    </div>
+                </div>
+
+                <input 
+                    id="guestName" 
+                    type="text" 
+                    placeholder="Enter your full legal name"
+                >
+
+                <button onclick="startInvite()" class="main-button">
+                    Enter Invitation
+                </button>
+
+                <p class="tiny">
+                    Failure to RSVP may result in emotional consequences/assaulting.
+                </p>
+            </div>
+        </section>
+
+        <!-- PUB -->
+        <section id="pubScreen" class="screen pub-theme">
+            <div class="pub-overlay"></div>
+
+            <div class="card pub-card">
+                <p class="label">Part I · Pub Pre-Game</p>
+
+                <h1>Are you coming to the pub mate?</h1>
+
+                <p class="subtitle">
+                    I need numbers so I can book a table and not look insane asking for “somewhere between 4 and 20 people hihi”
+                </p>
+
+                <div class="details-box">
+                    <p><strong>Where:</strong> OX184, 184–186 Cowgate</p>
+                    <p><strong>When:</strong> Friday 26 June, I guess around 9:30pm?</p>
+                    <p>I like house music I think it's pretty cool to hit the frat flick to, lol</p>
+                </div>
+
+                <div class="button-row">
+                    <button onclick="answerPub('yes')" class="yes-button pub-yes">
+                        Yes, book me a seat 🍻
+                    </button>
+
+                    <button onclick="answerPub('no')" class="no-button">
+                        No, I hate Lulu and she's really mean so I don't wanna come 😔
+                    </button>
+                </div>
+
+                <div id="pubReaction" class="reaction hidden"></div>
+
+                <div id="pubExtraDetails" class="extra-details hidden">
+                    <h2>HELL YEAH</h2>
+                    <p>
+                        Be at <strong>OX184, Cowgate</strong> for around <strong>9:30 PM</strong>.
+                        Gifts are welcome, but birthday drinks are also an acceptable contribution to society.
+                        I'd suggest bringing a plus one if you want, but please let me know so I can book a table for the right number of people.
+                    </p>
+
+                    <button onclick="copyPubDetails()" class="secondary-button">
+                        Copy pub details
+                    </button>
+                </div>
+
+                <button id="toClubButton" onclick="goToClub()" class="main-button hidden">
+                    Continue to Part II
+                </button>
+            </div>
+        </section>
+
+        <!-- CLUB -->
+        <section id="clubScreen" class="screen club-theme">
+            <div class="rave-bg"></div>
+            <div class="laser laser-one"></div>
+            <div class="laser laser-two"></div>
+            <div class="laser laser-three"></div>
+
+            <div class="card club-card">
+                <p class="label">Part II · Hardcore / Gabber</p>
+
+                <h1>Are you coming to Alien Disko?</h1>
+
+                <p class="subtitle">
+                    The second part of the night is a hard techno / gabber rave.
+                    Lulu does enjoy a nice rave, and she'd like to see you there. If you are not into this kind of music, it's okay to say no (you bitch). But if you're into it, please say yes. It's a very good rave.
+                    Subway is right next door, feel free to go there but I won't go on my mamma I hate Subway. Also thinking about inviting my dissertation supervisor what do you guys think 🤔
+                </p>
+
+                <div class="details-box rave-details">
+                    <p><strong>Event:</strong> Alien Disko - Enastorm [Gabber / Hardcore]</p>
+                    <p><strong>Where:</strong> The Bongo Club, 66 Cowgate</p>
+                    <p><strong>Time:</strong> 11:00 PM – 3:00 AM</p>
+                    <p><strong>Important:</strong> You must buy your own ticket on Resident Advisor.</p>
+                </div>
+
+                <div class="button-row">
+                    <button onclick="answerClub('yes')" class="yes-button rave-button">
+                        Yes, I enter the rave dimension 🖤
+                    </button>
+
+                    <button onclick="answerClub('no')" class="no-button">
+                        No, my name is Kate (she knows who she is) and I'm weak ass Taiwanese (with lots of love 🥰)
+                    </button>
+                </div>
+
+                <div id="clubReaction" class="reaction hidden"></div>
+
+                <div id="clubExtraDetails" class="extra-details hidden">
+                    <h2>Club details unlocked</h2>
+                    <p>
+                        Buy your ticket on Resident Advisor before it sells out.
+                        Merci (oui oui baguette 🥖)
+                    </p>
+
+                    <a 
+                        class="ticket-button" 
+                        href="https://ra.co/events/2442092" 
+                        target="_blank"
+                    >
+                        Open Resident Advisor ticket page
+                    </a>
+
+                    <label class="checkbox-line">
+                        <input type="checkbox" id="ticketCheck">
+                        I understand I need to buy my own club ticket
+                    </label>
+                </div>
+
+                <textarea 
+                    id="guestNote" 
+                    placeholder="Optional note: gift confirmation, drink offer, emotional apology, etc."
+                ></textarea>
+
+                <button id="submitButton" onclick="submitRSVP()" class="main-button hidden">
+                    Submit RSVP
+                </button>
+            </div>
+        </section>
+
+        <!-- FINAL -->
+        <section id="finalScreen" class="screen final-theme">
+            <div class="final-glow"></div>
+
+            <div class="card final-card">
+                <p class="label">RSVP Recorded</p>
+
+                <h1 id="finalTitle">Your fate has been sealed! If you say yes to one of the events, you're committed and I appreciate it.</h1>
+
+                <p id="finalMessage" class="subtitle"></p>
+
+                <div class="summary-box">
+                    <p><strong>Name:</strong> <span id="summaryName"></span></p>
+                    <p><strong>Pub:</strong> <span id="summaryPub"></span></p>
+                    <p><strong>Club:</strong> <span id="summaryClub"></span></p>
+                </div>
+
+                <button onclick="copyFullDetails()" class="secondary-button">
+                    Copy full birthday details
+                </button>
+
+                <p class="tiny">
+                    Yes that bitch Lulu is turning 23, shut the fuck up.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="toast" class="toast hidden">Copied.</div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
